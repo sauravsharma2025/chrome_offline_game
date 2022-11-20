@@ -1,0 +1,84 @@
+.game{
+    width: 100%;
+    height: 320px;
+    border-bottom: 5px solid black;
+    margin: auto;
+}
+#dino{
+    width: 100px;
+    height: 100px;
+    background-image: url(/images/dragon.png);
+    background-size: 100px 100px;
+    position: relative;
+    top: 220px;
+    
+}
+#cactus{
+    width: 71px;
+    height: 64px;
+    position: relative;
+    top: 156px;
+    left: 1000px;
+    background-image:url(/images/cactus.png);
+    background-size: 60px 60px;
+    
+}
+.cactus-move{
+    animation: obstcle 1s infinite linear;
+}
+@keyframes obstcle{
+    0%{
+        left: 1100px;
+    }
+    100%{
+        left: 0px;
+    }
+}
+.jump{
+    animation: jump 0.3s linear;
+}
+@keyframes jump{
+    0%{
+        top: 150px;
+    }
+    30%{
+        top: 130px;
+    }
+    50%{
+        top: 80px;
+    }
+    80%{
+        top: 130px;
+    }
+    100%{
+        top: 150px;
+    }
+}
+#strt-btn{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: black;
+    font-size: 17px;
+    
+    
+}
+#button{
+    width: 600px;
+    height: 200px;
+    margin: auto; 
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#game-over{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color:red;
+    background-color: aqua;
+}
+#score{
+      position: absolute;
+      right: 308px;
+}
