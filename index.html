@@ -6,16 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+<style>
+
+.cartoon-dragon{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+/* This styles the 3D object inserted in the aside container */
+
+
+</style>
 </head>
-<body>
-    <div id="game-over"></div>
+<body><div class="cartoon-dragon">
+    <model-viewer src="/3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
+   
+    <model-viewer src="/3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
+  
+        <model-viewer src="/3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
+    </div>
+</div>
+    
+   
+
     <div class="game">
         <div id="score"></div>
         <div id="dino"></div>
         <div id="cactus"></div>
      
     </div>
-    <div id="button"><input id="strt-btn" type="button" value="Start" name="start"></div>
+    <div id="game-over"></div>
+    <!-- <div id="button"><input id="strt-btn" type="button" value="Start" name="start"></div> -->
+   
 </body>
 </html>
 <script src="main.js"></script>

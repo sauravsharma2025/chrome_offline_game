@@ -1,18 +1,23 @@
 let dino = document.getElementById("dino");
 let cactus = document.getElementById("cactus");
 let start = document.getElementById("strt-btn");
+//Setting default value for score as a zero
+if (!localStorage.getItem("High")) {
+  localStorage.setItem("High", 0);
+}
 // start.addEventListener("click", () => {
 let score = 0;
 // });
 function jump() {
   dino.className = "jump";
   let jumpSound = document.createElement("audio");
-  jumpSound.src = "audio/jump1.mp3";
+  // jump1.mp3
+  jumpSound.src = "audio/jump2.mp3";
   jumpSound.autoplay = "autoplay";
   dino.append(jumpSound);
   setTimeout(function () {
     dino.removeAttribute("class");
-    jumpSound.remove();
+    // jumpSound.remove();
   }, 300);
 }
 document.addEventListener("keydown", (event) => {
@@ -20,19 +25,44 @@ document.addEventListener("keydown", (event) => {
     jump();
     cactus.className = "cactus-move";
     score += 1;
-    document.getElementById("score").innerHTML = ` Total Score:${score}`;
+    if (score === 9) {
+      document.getElementById("high-score-sound").pause();
+    }
+    let existingData = JSON.parse(localStorage.getItem("High"));
+    if (existingData) {
+      document.getElementById(
+        "score"
+      ).innerHTML = `High score: ${localStorage.getItem(
+        "High"
+      )} Total Score:${score}`;
+    } else {
+      document.getElementById("score").innerHTML = ` Total Score:${score}`;
+    }
+    if (score > localStorage.getItem("High")) {
+      document.getElementById(
+        "score"
+      ).innerHTML = `High score:${score} Total Score:${score}`;
+    }
+  }
+  if (score > localStorage.getItem("High")) {
+    let highScoreSound = document.createElement("audio");
+    highScoreSound.id = "high-score-sound";
+    highScoreSound.src = "audio/jump1.mp3";
+    highScoreSound.autoplay = "autoplay";
+    dino.append(highScoreSound);
+    let removehighScoreCrossSound = setTimeout(() => {
+      // document.getElementById("high-score-sound").remove();
+      // highScoreSound.remove();
+    }, 1000);
   }
 });
 
 var runAudio = document.createElement("audio");
 runAudio.className = "runSound";
 runAudio.src = "audio/runningNew.mp3";
-// runAudio.autoplay = "autoplay";
+runAudio.autoplay = "autoplay";
 runAudio.loop = "loop";
 dino.append(runAudio);
-window.onload = function () {
-  document.getElementsByClassName("runSound")[0].play();
-};
 
 const isAlive = setInterval(() => {
   let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
@@ -40,7 +70,7 @@ const isAlive = setInterval(() => {
     window.getComputedStyle(cactus).getPropertyValue("left")
   );
 
-  if (cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 140) {
+  if (cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 65) {
     let gameOverSound = document.createElement("audio");
     gameOverSound.autoplay = "autoplay";
     gameOverSound.src = "audio/gameover.wav";
@@ -51,6 +81,9 @@ const isAlive = setInterval(() => {
     // gameOverimg.addEventListener("click", () => {
     //   gameOverimg.remove();
     // });
+    if (score > localStorage.getItem("High")) {
+      localStorage.setItem("High", score);
+    }
     let msgH1 = document.createElement("h1");
     let msgH11 = "Game Over! Click to Start Again";
     document.getElementById("game-over").innerHTML =
@@ -58,8 +91,9 @@ const isAlive = setInterval(() => {
     const overMe = setTimeout(() => {
       cactus.removeAttribute("class");
       let storeScore = score;
+
       score = 0;
-      console.log("SK@", score);
+
       // runAudio.remove();
     }, 300);
     document.getElementById("dino").addEventListener("keydown", () => {
