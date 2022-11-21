@@ -44,7 +44,7 @@ document.addEventListener("keydown", (event) => {
       ).innerHTML = `High score:${score} Total Score:${score}`;
     }
   }
-  if (score > localStorage.getItem("High")) {
+  if (score + 1 == localStorage.getItem("High")) {
     let highScoreSound = document.createElement("audio");
     highScoreSound.id = "high-score-sound";
     highScoreSound.src = "audio/jump1.mp3";
@@ -73,7 +73,7 @@ const isAlive = setInterval(() => {
   if (cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 65) {
     let gameOverSound = document.createElement("audio");
     gameOverSound.autoplay = "autoplay";
-    gameOverSound.src = "audio/gameover.wav";
+    gameOverSound.src = "audio/gameover.mp3";
     dino.append(gameOverSound);
     // gameOverimg = document.createElement("img");
     // gameOverimg.src = "images/game-over.jpg";
