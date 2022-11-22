@@ -30,7 +30,7 @@ playGuest.addEventListener("click", () => {
     }, 300);
   }
   document.addEventListener("keydown", startGame);
-  dino.addEventListener("click", startGameOnclick);
+  dino.addEventListener("touchstart", startGameOnclick);
   function startGameOnclick(event) {
     jump();
     cactus.className = "cactus-move";
