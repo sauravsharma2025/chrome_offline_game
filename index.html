@@ -4,44 +4,103 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
-<style>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        *{
+            color: brown;
+            background-color: darkseagreen;
+        }
+        .container{
+            border: 5px groove floralwhite;
+            width: 300px;
+            position: relative;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 120px;
 
-.cartoon-dragon{
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+        }
+        .main{
+         
+            width: 300px;
+            position: relative;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+        }
+        #login-register{
+            font-size: large;
+    background: coral;
+    border: none;
+    color: white;
+        }
+        .play-as-guest{
+            font-size: larger;
+    background-color: black;
+    color: wheat;
+    margin-top: 5px;
+        }
 
-}
-
-/* This styles the 3D object inserted in the aside container */
-
-
-</style>
+        
+    </style>
 </head>
-<body><div class="cartoon-dragon">
-    <model-viewer src="/3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
-   
-    <model-viewer src="/3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
-  
-        <model-viewer src="/3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
+<body>
+    <div class="main">
+        <div class="container">
+            <h3>Play Chetak</h3>
+        <div class="login-register-box">
+            <button id="login-register">Login/Register</button>
+        </div>
+        <div class="play-as-guest" id="anonymously">Play as guest</div>
+        </div>
     </div>
-</div>
-    
-   
-
     <div class="game">
         <div id="score"></div>
         <div id="dino"></div>
         <div id="cactus"></div>
      
     </div>
-    <div id="game-over"></div>
-    <!-- <div id="button"><input id="strt-btn" type="button" value="Start" name="start"></div> -->
-   
+    <!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Login </h2>
+    </div>
+    <div class="modal-body">
+        <i class='fas fa-users' style='font-size:48px;color:var(--twitter-color);margin: 5px;'></i>
+        <div class="input">
+            <div class="input-container">
+            <i class="fa fa-user icononic"></i> 
+            <span style="border:1px solid black;"></span>  
+        <input type="text" id="user_id" class="input_field" onkeyup="enabling()" placeholder="Username" required><br>
+    </div>
+    <div class="input-container">
+        <i class="fa fa-key icononic"></i>
+        <span style="border:1px solid black;"></span>  
+        <input type="password" id="pwd" class="input_field"
+        placeholder="Password" required>
+    </div>
+    <div class="modal-footer">
+        <button name="btn" class="btn-btn" id="xyz" onclick="trigger()"  disabled >Submit</button>
+    </div>
+  </div>
+    </div>
+    <div class="game-over-cls" id="game-over"></div>
+    
 </body>
 </html>
 <script src="main.js"></script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chetak:The dragon game</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+<style>
+
+.cartoon-dragon{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+/* This styles the 3D object inserted in the aside container */
+
+
+</style>
+</head>
+<body><div class="cartoon-dragon">
+    <model-viewer src="3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
+   
+    <model-viewer src="3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
+  
+        <model-viewer src="3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
+    </div>
+</div>
+    
+   
+
+    <div class="game">
+        <div id="score"></div>
+        <div id="dino"></div>
+        <div id="cactus"></div>
+     
+    </div>
+    <div class="game-over-cls" id="game-over"></div>
+    <!-- <div id="button"><input id="strt-btn" type="button" value="Start" name="start"></div> -->
+  
+</body>
+</html>
+<script src="main.js"></script>
