@@ -1,4 +1,8 @@
 let playGuest = document.getElementById("anonymously");
+let loginRegister = document.getElementById("login-register");
+loginRegister.addEventListener("click", () => {
+  document.getElementsByClassName("modal")[0].style.display = "flex";
+});
 let game = document.getElementsByClassName("game")[0];
 playGuest.addEventListener("click", () => {
   document.getElementsByClassName("main")[0].remove();
@@ -25,7 +29,37 @@ playGuest.addEventListener("click", () => {
       // jumpSound.remove();
     }, 300);
   }
-  document.addEventListener("keydown", (event) => {
+  document.addEventListener("keydown", startGame);
+  dino.addEventListener("click", startGameOnclick);
+  function startGameOnclick(event) {
+    jump();
+    cactus.className = "cactus-move";
+    score += 1;
+    let existingData = JSON.parse(localStorage.getItem("High"));
+    if (existingData) {
+      document.getElementById(
+        "score"
+      ).innerHTML = `High score: ${localStorage.getItem(
+        "High"
+      )} Total Score:${score}`;
+    } else {
+      document.getElementById("score").innerHTML = ` Total Score:${score}`;
+    }
+    if (score > localStorage.getItem("High")) {
+      document.getElementById(
+        "score"
+      ).innerHTML = `High score:${score} Total Score:${score}`;
+    }
+
+    if (score + 1 == localStorage.getItem("High")) {
+      let highScoreSound = document.createElement("audio");
+      highScoreSound.id = "high-score-sound";
+      highScoreSound.src = "audio/jump1.mp3";
+      highScoreSound.autoplay = "autoplay";
+      dino.append(highScoreSound);
+    }
+  }
+  function startGame(event) {
     if (event.code === "Space") {
       jump();
       cactus.className = "cactus-move";
@@ -61,7 +95,7 @@ playGuest.addEventListener("click", () => {
       //   //   document.getElementById("score").style.opacity == 0 ? 1 : 0;
       // }, 10);
     }
-  });
+  }
 
   var runAudio = document.createElement("audio");
   runAudio.className = "runSound";
@@ -119,15 +153,13 @@ playGuest.addEventListener("click", () => {
 // Get the modal
 var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("login-register");
 
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
 btn.onclick = function () {
-  modal.style.display = "block";
+  modal.style.display = "flex";
 };
 
 // When the user clicks on <span> (x), close the modal
