@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{
+            border:1px solid black;
+            border-collapse: collapse;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="score">
+            <table id="score-history" class="score-tab">
+                <tr>
+                    <th>Score</th>
+                    <th>Lifeline</th>
+                    <th>Date</th>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+let scoreData=JSON.parse(localStorage.getItem('score_history'));
+console.log('SK@',scoreData[0]);
+for(let i=0;i<scoreData.length;i++){
+    let tableData=`
+    <td>${scoreData[i].score}</td>
+    <td>${scoreData[i].date_time}</td>
+    <td>${scoreData[i].lifeline}</td>
+  `
+let trElm=document.createElement('tr');
+trElm.innerHTML=tableData;
+document.getElementById('score-history').append(trElm);
+}
+</script>

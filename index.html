@@ -106,7 +106,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
-    import { getAuth,GoogleAuthProvider,signInWithRedirect,getRedirectResult } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+    import { getAuth,GoogleAuthProvider,signInWithRedirect,getRedirectResult,signInWithPopup } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -128,15 +128,38 @@
     const provider = new GoogleAuthProvider(app);
     const analytics = getAnalytics(app);
     document.getElementById('login-register').addEventListener('click',(e)=>{
-        signInWithRedirect(auth, provider);
-        getRedirectResult(auth)
+        // signInWithRedirect(auth, provider);
+//         getRedirectResult(auth)
+//   .then((result) => {
+//     // This gives you a Google Access Token. You can use it to access Google APIs.
+//     const credential = GoogleAuthProvider.credentialFromResult(result);
+//     const token = credential.accessToken;
+
+//     // The signed-in user info.
+//     const user = result.user;
+//     localStorage.setItem('user',user)
+//   }).catch((error) => {
+//     // Handle Errors here.
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // The email of the user's account used.
+//     const email = error.customData.email;
+//     // The AuthCredential type that was used.
+//     const credential = GoogleAuthProvider.credentialFromError(error);
+//     // ...
+//   });
+signInWithPopup(auth, provider)
   .then((result) => {
-    // This gives you a Google Access Token. You can use it to access Google APIs.
+    // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
-
     // The signed-in user info.
     const user = result.user;
+    // ...
+    localStorage.setItem('Name-Logged',user.displayName)
+    document.write(`<img src='${user.photoURL}'>`)
+    alert(user.displayName);
+
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -146,7 +169,9 @@
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
+    alert(errorMessage);
   });
+
     })
   </script>
 

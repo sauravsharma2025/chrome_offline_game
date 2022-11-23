@@ -5,6 +5,10 @@ loginRegister.addEventListener("click", () => {
 });
 let game = document.getElementsByClassName("game")[0];
 playGuest.addEventListener("click", () => {
+  if (!localStorage.getItem("score_history")) {
+    localStorage.setItem("score_history", JSON.stringify([]));
+  }
+
   document.getElementsByClassName("main")[0].remove();
   game.style = "display:block";
   let dino = document.getElementById("dino");
@@ -123,14 +127,33 @@ playGuest.addEventListener("click", () => {
       // gameOverimg.addEventListener("click", () => {
       //   gameOverimg.remove();
       // });
+      //following logic will insert every record which is higher than 5
+      if (score >= 5) {
+        let scoreObj = {
+          score: score,
+          date_time: "na",
+          lifeline: "No",
+        };
+        let localStorageArrObj = JSON.parse(
+          localStorage.getItem("score_history")
+        );
+
+        localStorageArrObj.push(scoreObj);
+        localStorage.setItem(
+          "score_history",
+          JSON.stringify(localStorageArrObj)
+        );
+      }
+
       if (score > localStorage.getItem("High")) {
         localStorage.setItem("High", score);
       }
       cactus.style.animationDuration = "1.5s";
       let msgH1 = document.createElement("h1");
       let msgH11 = "Game Over! Click to Start Again";
-      document.getElementById("game-over").innerHTML =
-        "<nobr><h1 id='over' style='text-align:center;color:red;'>Game Over! Click to Start Again</h1>";
+      document.getElementById(
+        "game-over"
+      ).innerHTML = `<nobr><h1 id='over' style='text-align:center;color:red;'>Game Over! Click to Start Again</h1>`;
       const overMe = setTimeout(() => {
         cactus.removeAttribute("class");
         let storeScore = score;
@@ -144,12 +167,13 @@ playGuest.addEventListener("click", () => {
       });
     }
   }, 50);
-  if (document.getElementById("game-over")) {
-    document.getElementById("game-over").addEventListener("click", (event) => {
-      document.getElementById("game-over").remove();
-    });
-  }
+  // if (document.getElementById("game-over")) {
+  //   document.getElementById("game-over").addEventListener("click", (event) => {
+  //     document.getElementById("game-over").remove();
+  //   });
+  // }
 });
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
