@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h3> Choose your character: </h3>
+        <div class="choices">
+            <input type="radio" name="choice" id="Default" value="Default" checked><label for="Default">Default dragon</label>
+            <input type="radio" name="choice" id="Profile" value="Profile"><label for="Profile">Profile Picture</label>
+            <input type="radio" name="choice" id="Dog" value="Dog"><label for="Dog">Dog</label>
+            <input type="radio" name="choice" id="cat" value="Cat"><label for="cat">Cat</label>
+        </div>
+
+        <input  id='select' type="button" value="Select">
+    </div>
+</body>
+</html>
+<script>
+
+    let x=``
+    let dino=document.getElementById('dino');
+    document.querySelector('#select').addEventListener('click', haveClicked);
+    function haveClicked(){
+let selectedValue=document.querySelector('input[name="choice"]:checked')
+let userData=JSON.parse(localStorage.getItem('users'));
+let gameData=JSON.parse(localStorage.getItem('game'));
+console.log('SK@',gameData[0].playerImg);
+switch(selectedValue.value){
+    case "Profile":
+    gameData[0].playerImg=userData[0].profile
+    localStorage.setItem('game',JSON.stringify(gameData))
+        break;
+    case "Default":
+        gameData[0].playerImg='images/dragon.png';
+        localStorage.setItem('game',JSON.stringify(gameData));    
+        break;
+    case "Dog":
+        gameData[0].playerImg='images/dog.png';
+        localStorage.setItem('game',JSON.stringify(gameData));    
+        break;
+    case "Cat":
+        gameData[0].playerImg='images/cat.png';
+        localStorage.setItem('game',JSON.stringify(gameData));    
+        break;     
+}
+
+}
+</script>

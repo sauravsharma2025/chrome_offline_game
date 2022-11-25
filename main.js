@@ -1,17 +1,74 @@
+// this is code from index page with google sign code
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+  signInWithPopup,
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 let playGuest = document.getElementById("anonymously");
-let loginRegister = document.getElementById("login-register");
-loginRegister.addEventListener("click", () => {
-  document.getElementsByClassName("modal")[0].style.display = "flex";
-});
 let game = document.getElementsByClassName("game")[0];
-playGuest.addEventListener("click", () => {
-  if (!localStorage.getItem("score_history")) {
-    localStorage.setItem("score_history", JSON.stringify([]));
+function triggerGame() {
+  if (!localStorage.getItem("game")) {
+    let gameObj = {
+      player: "dragon",
+      playerImg: "images/dragon.png",
+      enemy: "images/cactus.png",
+      theme: "white",
+    };
+    localStorage.setItem("game", JSON.stringify([gameObj]));
+  }
+  if (localStorage.getItem("users")) {
+    //start below code is for user profile on screen
+    let scoreHistory = JSON.parse(localStorage.getItem("score_history"));
+    console.log("SK@", scoreHistory[0].score);
+    let highest = scoreHistory[0].score;
+    for (let i = 0; i < scoreHistory.length - 1; i++) {
+      let next = scoreHistory[i + 1].score;
+      if (highest > next) {
+        continue;
+      } else {
+        highest = scoreHistory[i + 1].score;
+      }
+    }
+    console.log("SK@42", highest);
+    let userData = JSON.parse(localStorage.getItem("users"));
+    console.log("SK@43", userData);
+    let user_profile = `
+          <img src="${userData[0].profile}" alt="" width="50px" height="50px" style="border-radius:30px">
+          <div class="name-email">
+              <p>Name:${userData[0].name}</p>
+              <p>Email:${userData[0].email}</p>
+          </div>
+      </div>
+      <div class="highest">
+          <h3>Highest Score</h3>
+           <h3>: ${highest}</h3>   
+      `;
+    let profileElm = document.createElement("div");
+    profileElm.className = "profileData";
+    profileElm.innerHTML = user_profile;
+    document.getElementsByClassName("containerData")[0].prepend(profileElm);
+    document.getElementsByClassName("containerData")[0].style = "display:flex";
+    document.getElementById("logout").style = "display:flex;";
+
+    // End user profile code end here.
   }
 
+  let gameData = JSON.parse(localStorage.getItem("game"));
   document.getElementsByClassName("main")[0].remove();
-  game.style = "display:block";
+  game.style = "display:flex";
   let dino = document.getElementById("dino");
+  dino.style.backgroundImage = `url(${gameData[0].playerImg})`;
   let cactus = document.getElementById("cactus");
   let start = document.getElementById("strt-btn");
   //Setting default value for score as a zero
@@ -68,9 +125,7 @@ playGuest.addEventListener("click", () => {
       jump();
       cactus.className = "cactus-move";
       score += 1;
-      if (score === 9) {
-        document.getElementById("high-score-sound").pause();
-      }
+
       let existingData = JSON.parse(localStorage.getItem("High"));
       if (existingData) {
         document.getElementById(
@@ -172,28 +227,80 @@ playGuest.addEventListener("click", () => {
   //     document.getElementById("game-over").remove();
   //   });
   // }
-});
-
-// Get the modal
-var modal = document.getElementById("myModal");
-
-var btn = document.getElementById("login-register");
-
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-btn.onclick = function () {
-  modal.style.display = "flex";
+}
+const firebaseConfig = {
+  apiKey: "AIzaSyAuf4L0P-b69m0IKQGl-UZ_6jkfO2wPtdQ",
+  authDomain: "chetak-4e794.firebaseapp.com",
+  projectId: "chetak-4e794",
+  storageBucket: "chetak-4e794.appspot.com",
+  messagingSenderId: "274010369347",
+  appId: "1:274010369347:web:91c7e573d4a55673d793f6",
+  measurementId: "G-JGBG2QJZMD",
 };
+if (!localStorage.getItem("users")) {
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider(app);
+  const analytics = getAnalytics(app);
+  document.getElementById("login-register").addEventListener("click", (e) => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+        //below code create db in user system
+        if (!localStorage.getItem("users")) {
+          localStorage.setItem("users", JSON.stringify([]));
+        }
+        if (user) {
+          // let registered_user = JSON.parse(localStorage.getItem("users"));
+          let uniqueNumer = new Date().getTime();
+          let userDetail = {
+            name: user.displayName,
+            email: user.email,
+            profile: user.photoURL,
+            id: uniqueNumer,
+          };
+          // registered_user.push(userDetail);
+          localStorage.setItem("users", JSON.stringify([userDetail]));
+        }
+      })
+      .then(() => {
+        triggerGame();
+      })
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        // const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+        alert(errorMessage);
+      });
+    let loginRegister = document.getElementById("login-register");
+  });
+} else {
+  document
+    .getElementById("login-register")
+    .addEventListener("click", triggerGame);
+}
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+playGuest.addEventListener("click", triggerGame); //Playing Anonymously
+
+if (!localStorage.getItem("score_history")) {
+  localStorage.setItem(
+    "score_history",
+    JSON.stringify([
+      {
+        score: 0,
+      },
+    ])
+  );
+}

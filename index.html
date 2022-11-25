@@ -9,46 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <style>
-        *{
-            color: brown;
-            background-color: antiquewhite;
-        }
-        .container{
-            border: 5px groove floralwhite;
-            width: 300px;
-            position: relative;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 120px;
-
-        }
-        .main{
-         
-            width: 300px;
-            position: relative;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 500px;
-        }
-        #login-register{
-            font-size: large;
-    background: coral;
-    border: none;
-    color: white;
-        }
-        .play-as-guest{
-            font-size: larger;
-    background-color: black;
-    color: wheat;
-    margin-top: 5px;
-        }
-
+       
         
     </style>
 </head>
@@ -64,116 +25,25 @@
     </div>
     <div class="game">
         <div id="score"></div>
+        <div class="containerDataParent">
+            <div class="containerData">
+                <div class="log-out">
+                    <input id="logout" type="button" value="Log-out">
+                </div>
+            </div>
+        </div>
+        
         <div id="dino"></div>
         <div id="cactus"></div>
      
     </div>
     <div class="game-over-cls" id="game-over"></div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Login </h2>
-    </div>
-    <div class="modal-body">
-        <i class='fas fa-users' style='font-size:48px;color:var(--twitter-color);margin: 5px;'></i>
-        <div class="input">
-            <div class="input-container">
-            <i class="fa fa-user icononic"></i> 
-            <span style="border:1px solid black;"></span>  
-        <input type="text" id="user_id" class="input_field" onkeyup="enabling()" placeholder="Username" required><br>
-    </div>
-    <div class="input-container">
-        <i class="fa fa-key icononic"></i>
-        <span style="border:1px solid black;"></span>  
-        <input type="password" id="pwd" class="input_field"
-        placeholder="Password" required>
-    </div>
-    
-    <div class="modal-footer">
-        <button name="btn" class="btn-btn" id="xyz" onclick="trigger()"  disabled >Submit</button>
-    </div>
-  </div>
-    </div>
   
     
 </body>
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
-    import { getAuth,GoogleAuthProvider,signInWithRedirect,getRedirectResult,signInWithPopup } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyAuf4L0P-b69m0IKQGl-UZ_6jkfO2wPtdQ",
-      authDomain: "chetak-4e794.firebaseapp.com",
-      projectId: "chetak-4e794",
-      storageBucket: "chetak-4e794.appspot.com",
-      messagingSenderId: "274010369347",
-      appId: "1:274010369347:web:91c7e573d4a55673d793f6",
-      measurementId: "G-JGBG2QJZMD"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider(app);
-    const analytics = getAnalytics(app);
-    document.getElementById('login-register').addEventListener('click',(e)=>{
-        // signInWithRedirect(auth, provider);
-//         getRedirectResult(auth)
-//   .then((result) => {
-//     // This gives you a Google Access Token. You can use it to access Google APIs.
-//     const credential = GoogleAuthProvider.credentialFromResult(result);
-//     const token = credential.accessToken;
-
-//     // The signed-in user info.
-//     const user = result.user;
-//     localStorage.setItem('user',user)
-//   }).catch((error) => {
-//     // Handle Errors here.
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // The email of the user's account used.
-//     const email = error.customData.email;
-//     // The AuthCredential type that was used.
-//     const credential = GoogleAuthProvider.credentialFromError(error);
-//     // ...
-//   });
-signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // ...
-    localStorage.setItem('Name-Logged',user.displayName)
-    document.write(`<img src='${user.photoURL}'>`)
-    alert(user.displayName);
-
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-    alert(errorMessage);
-  });
-
-    })
   </script>
 
 </html>
-<script src="main.js"></script>
+<script type="module" src="main.js"></script>
