@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+        }
+        /* .dash-nav{
+            border-right: 1px solid black;
+        } */
+        .dash-nav li{
+            list-style-type: none;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 1.1em;
+    background-color: antiquewhite;
+          
+            }
+        .dashboard-container{
+            display: flex;
+            
+            align-items: baseline;
+        }
+        .dash-nav a{
+            font-size: 2em;
+    text-decoration: none;
+    color: forestgreen;
+    font-family: cursive;
+    display: flex;
+        }
+        .dash-option{
+            position: relative;
+            left: 26.5em;
+            color: forestgreen;
+            height: 9.9em;
+        }
+        .dash-option h1{
+            left: -2.0em;
+            position: relative;
+        }
+        .material-icons{
+            font-size: 1.5em;
+        }
+        .highest-score{
+            border: 1px solid black;
+    height: 10em;
+    border-radius: 2em;
+    position: relative;
+    right: 24em;
+    top: 3em;
+    background-color: #fd79a8;
+    color: #ecf0f1;
+    border-color: floralwhite;
+    text-align: center;
+        }
+        .highest-score h3{
+            position: relative;
+         
+            bottom: -2.5em;
+            font-size:1.5em;
+        }
+        .third{
+          top: 10em;
+        }
+        .second{
+            top: -17.23em;
+            left: 15em;
+        }
+        .forth{
+            top: -10.29em;
+    left: 15em;
+
+        }
+        #aSide {
+    height: 600px;
+    width: 600px;
+    position: absolute;
+    top: calc(50% - 250px);
+    right: 7%;
+}
+
+/* This styles the 3D object inserted in the aside container */
+#aSide model-viewer {
+    height: 600px;
+    width: 600px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    color: red;
+}
+       
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dash-nav">
+            <ul>
+                <li><a href="/">Home<span class="material-icons">
+                    home
+                    </span></a></li>
+                <li><a href="/">Leaderboard<span class="material-icons">
+                    leaderboard
+                    </span></a></li>
+                <li><a href="/">Scores<span class="material-icons">
+                    scoreboard
+                    </span></a></li>
+                <li><a href="/">Levels<span class="material-icons">
+                    rocket
+                    </span></a></li>
+                <li><a href="/">Customize<span class="material-icons">
+                    extension
+                    </span></a></li>
+                <li><a href="/">Reward<span class="material-icons">
+                    emoji_events
+                    </span></a></li>
+                <li><a href="/">Profile<span class="material-icons">
+                    account_circle
+                    </span></a></li>
+            </ul>
+        </div>
+        <div class="dash-option"><h1>Welcome to Chetak</h1>
+        <div class="highest-score">
+            <h3 >Highest Score:3456</h3>
+        </div>
+        <div class="highest-score third">
+            <h3 class='box-h3'>Reward:3456</h3>
+        </div>
+        <div class="highest-score second">
+            <h3 id='box-h2'>Levels:Easy</h3>
+        </div>
+        <div class="highest-score forth">
+            <h3 class='box-h4'>Customize</h3>
+        </div>
+        </div>
+        <div class="cartoon-dragon">
+                <model-viewer src="3d_objects/assets/scene.gltf" alt="VR Headset" auto-rotate  ar ios-src="assets/scene.gltf"></model-viewer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
