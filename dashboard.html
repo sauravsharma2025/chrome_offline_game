@@ -31,12 +31,13 @@
             
             align-items: baseline;
         }
-        .dash-nav a{
+        .customize{
             font-size: 2em;
     text-decoration: none;
     color: forestgreen;
     font-family: cursive;
     display: flex;
+    
         }
         .dash-option{
             position: relative;
@@ -62,6 +63,7 @@
     color: #ecf0f1;
     border-color: floralwhite;
     text-align: center;
+    background: linear-gradient(45deg, #fd79a8,black, transparent);
         }
         .highest-score h3{
             position: relative;
@@ -99,34 +101,192 @@
     border: none;
     color: red;
 }
-       
+.cartoon-dragon{
+    position: absolute;
+    left: 38em;
+    top: 17em;
+}
+/*Start This is modal for customize character  */
+
+/* The Modal (background) */
+.modal-customize {
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 32%;
+  border-radius: 10px;
+  background-color: darkseagreen;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.image-customize{
+    width: 50px;
+    height: 50px;
+}
+.customize-chars{
+    display: flex;
+    justify-content: space-between;
+}
+.customize-chars1{
+    display: flex;
+    justify-content: space-between;
+} 
+.customize-char-parent{
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+.customize-char-parent h3{
+    text-align: center;
+    font-size: 20px;
+    color: lemonchiffon;
+ }
+
+/*End modal css  */
+/*Start Model for Score */
+.modal-score{
+    display: none;
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+/*Start Model style for table */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+/* End model style for table */
+/* End model for Score */
+/*@s Profile modal */
+.modal-profile{
+    display:none;
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+/* @modal body style */
+.containerData{
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            
+            font-size: 20px;
+            width: 100%;
+        }
+        .profileData{
+            display: flex;
+            align-items:center;
+            flex-direction: column;
+            
+        }
+        .profileData img{
+            border-radius: 30px;
+    width: 200px;
+    height: 200px;
+        }
+        .name-email{
+            display: flex;
+    flex-direction: column;
+        }
+        .name-email p{
+            margin: 0.1em;
+        }
+        .highest{
+            display: flex;
+        }
+        #logout{
+            display: none;
+            font-size: 20px;
+            border: none;
+            color: aquamarine;
+            background-color: darkslateblue;
+    border-radius: 7px;
+    margin-bottom: 0.3em;
+        }
+
+/*@e profile modal*/
+
     </style>
 </head>
 <body>
     <div class="dashboard-container">
         <div class="dash-nav">
             <ul>
-                <li><a href="/">Home<span class="material-icons">
+                <li class="customize">Home<span class="material-icons">
                     home
-                    </span></a></li>
-                <li><a href="/">Leaderboard<span class="material-icons">
+                    </span></li>
+                <li class="customize">Leaderboard<span class="material-icons">
                     leaderboard
-                    </span></a></li>
-                <li><a href="/">Scores<span class="material-icons">
+                    </span></li>
+                <li class="customize" id="score_id">Scores<span class="material-icons">
                     scoreboard
-                    </span></a></li>
-                <li><a href="/">Levels<span class="material-icons">
+                    </span></li>
+                <li class="customize">Levels<span class="material-icons">
                     rocket
-                    </span></a></li>
-                <li><a href="/">Customize<span class="material-icons">
+                    </span></li>
+                <li class="customize" id="customize_id">Customize<span class="material-icons">
                     extension
-                    </span></a></li>
-                <li><a href="/">Reward<span class="material-icons">
+                    </span></li>
+                <li class="customize">Reward<span class="material-icons">
                     emoji_events
-                    </span></a></li>
-                <li><a href="/">Profile<span class="material-icons">
+                    </span></li>
+                <li class="customize" id="profile_id">Profile<span class="material-icons">
                     account_circle
-                    </span></a></li>
+                    </span></li>
             </ul>
         </div>
         <div class="dash-option"><h1>Welcome to Chetak</h1>
@@ -140,7 +300,7 @@
             <h3 id='box-h2'>Levels:Easy</h3>
         </div>
         <div class="highest-score forth">
-            <h3 class='box-h4'>Customize</h3>
+            <h3 class='box-h4' id="customize">Customize</h3>
         </div>
         </div>
         <div class="cartoon-dragon">
@@ -148,5 +308,219 @@
             </div>
         </div>
     </div>
+    <!-- Start The Modal  for customize character-->
+<div id="customize-char" class="modal-customize">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="customize-char-parent">
+        <h3>Choose your character</h3>
+        <div class="customize-chars">
+            <div class="first-char"><img class="image-customize" src="images/cat.png" alt=""></div>
+            <div class="sec-char"><img class="image-customize"  src="images/dog.png" alt=""></div>  
+          </div>
+          <div class="customize-chars1">
+            <div class="third-char"><img class="image-customize"  src="images/profile.png" alt=""></div>
+    <div class="forth-char"><img class="image-customize"  src="images/dragon.png" alt=""></div>
+          </div>
+      </div>
+    
+    </div>
+  
+  </div>
+  <!-- End The Modal  for customize character  -->
+<!-- Start the modal for Scores -->
+<div id="highest-score" class="modal-score">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="customize-score-parent">
+        <h3>Top five Scores</h3>
+       <table id="score-history">
+        <tr>
+            <th>Score</th>
+            <th>Lifeline</th>
+            <th>Date and Time</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+       </table>
+      </div> 
+    </div>
+  
+  </div>
+<!-- End modal for score -->
+<!-- Start modal for profile -->
+<div id="user_profile" class="modal-profile">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="containerData">
+        <div class="log-out">
+            <input id="logout" type="button" value="Log-out">
+      </div> 
+    </div>
+  
+  </div>
+<!-- End modal for profile -->
 </body>
 </html>
+<script>
+    // [Start] This code belong to customize secotion.
+    let userData=JSON.parse(localStorage.getItem('users'));
+   
+    let gameData=JSON.parse(localStorage.getItem('game'));
+    let firstChar=document.getElementsByClassName('first-char')[0];
+    let sec_char=document.getElementsByClassName('sec-char')[0];
+    let third_char=document.getElementsByClassName('third-char')[0];
+    let forth_char=document.getElementsByClassName('forth-char')[0];
+    firstChar.addEventListener('click',(()=>{
+        if(firstChar.childElementCount>1){
+            firstChar.removeChild(firstChar.lastElementChild)
+        }
+        gameData[0].playerImg='images/cat.png';
+        localStorage.setItem('game',JSON.stringify(gameData));
+        let addCat=document.createElement('img');
+        addCat.src='images/cat.png';
+        addCat.style.position='fixed';
+        addCat.style.left='540px';
+        addCat.style.width='140px';
+        firstChar.append(addCat);
+    }))
+    sec_char.addEventListener('click',(()=>{
+        if(firstChar.childElementCount>1){
+            firstChar.removeChild(firstChar.lastElementChild)
+        }
+        gameData[0].playerImg='images/dog.png';
+        localStorage.setItem('game',JSON.stringify(gameData));
+        let addCat=document.createElement('img');
+        addCat.src='images/dog.png';
+        addCat.style.position='fixed';
+        addCat.style.left='540px';
+        addCat.style.width='140px';
+        firstChar.append(addCat);
+    }))
+    third_char.addEventListener('click',(()=>{
+        if(firstChar.childElementCount>1){
+            firstChar.removeChild(firstChar.lastElementChild)
+        }
+        gameData[0].playerImg='images/cat.png';
+        localStorage.setItem('game',JSON.stringify(gameData));
+        let addCat=document.createElement('img');
+        addCat.src=`${userData[0].profile}`;
+        addCat.style.position='fixed';
+        addCat.style.left='540px';
+        addCat.style.width='140px';
+        firstChar.append(addCat);
+    }))
+    forth_char.addEventListener('click',(()=>{
+        if(firstChar.childElementCount>1){
+            firstChar.removeChild(firstChar.lastElementChild)
+        }
+        gameData[0].playerImg='images/dragon.png';
+        localStorage.setItem('game',JSON.stringify(gameData));
+        let addCat=document.createElement('img');
+        addCat.src='images/dragon.png';
+        addCat.style.position='fixed';
+        addCat.style.left='540px';
+        addCat.style.width='140px';
+        firstChar.append(addCat);
+    }))
+     modal=document.getElementById('customize-char');
+     modalCustmizeBtn=document.getElementById('customize_id');
+    var span = document.getElementsByClassName("close")[0];
+    modalCustmizeBtn.onclick=function(){
+        modal.style.display='block';
+    }
+    span.onclick=function(){
+        modal.style.display='none';
+    }
+    window.addEventListener('click',((e)=>{
+        if(e.target===modal){
+            modal.style.display='none';
+        }
+    }))
+    
+    //[End] customize code section end here.
+    
+    //Start score modal code
+    modal_score=document.getElementById('highest-score');
+    scoreBtn=document.getElementById('score_id');
+    var spans = document.getElementsByClassName("close")[1];
+    scoreBtn.onclick=function(){
+        modal_score.style.display='block';
+    }
+    spans.onclick=function(){
+        modal_score.style.display='none';
+    }
+    window.addEventListener('click',((e)=>{
+        if(e.target===modal_score){
+            modal_score.style.display='none';
+        }
+    }))
+   
+    let scoreData=JSON.parse(localStorage.getItem('score_history'));
+
+let highest = scoreData[0].score;
+    for (let i = 0; i < scoreData.length - 1; i++) {
+      let next = scoreData[i + 1].score;
+      if (highest > next) {
+        continue;
+      } else {
+        highest = scoreData[i + 1].score;
+      }}
+      
+for(let i=1;i<scoreData.length;i++){
+    let tableData=`
+    <td>${scoreData[i].score}</td>
+    <td>${scoreData[i].date_time}</td>
+    <td>${scoreData[i].lifeline}</td>
+  `
+let trElm=document.createElement('tr');
+trElm.innerHTML=tableData;
+document.getElementById('score-history').append(trElm);
+}
+//End  score code here
+
+
+// Start profile Code
+modal_profile=document.getElementById('user_profile');
+
+    scoreBtn=document.getElementById('profile_id');
+    var spans = document.getElementsByClassName("close")[2];
+    scoreBtn.onclick=function(){
+        modal_profile.style.display='block';
+    }
+    spans.onclick=function(){
+        modal_profile.style.display='none';
+    }
+    window.onclick= function(ef){
+        if(ef.target===modal_profile){
+            modal_profile.style.display='none';
+        }
+    }
+    let user_profile=`
+            <img src="${userData[0].profile}" alt="" width="50px" height="50px" style="border-radius:30px">
+            <div class="name-email">
+                <p>Name:${userData[0].name}</p>
+                <p>Email:${userData[0].email}</p>
+            </div>
+        </div>
+        <div class="highest">
+            <h3>Highest Score</h3>
+             <h3>: 3333</h3>   
+        `;
+let profileElm=document.createElement('div')
+profileElm.className='profileData';
+profileElm.innerHTML=user_profile;
+document.getElementsByClassName('containerData')[0].prepend(profileElm);
+document.getElementsByClassName('containerData')[0].style='display:flex';
+document.getElementById('logout').style='display:flex;'
+// End profile code
+</script>
