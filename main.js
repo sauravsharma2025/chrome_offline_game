@@ -186,7 +186,7 @@ function triggerGame() {
       if (score >= 5) {
         let scoreObj = {
           score: score,
-          date_time: "na",
+          date_time: new Date().toLocaleString(),
           lifeline: "No",
         };
         let localStorageArrObj = JSON.parse(

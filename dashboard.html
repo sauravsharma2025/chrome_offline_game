@@ -14,60 +14,70 @@
         *{
             margin:0px;
             padding: 0px;
+            font-family: sans-serif;
         }
-        /* .dash-nav{
-            border-right: 1px solid black;
-        } */
+          
         .dash-nav li{
             list-style-type: none;
-    border: 1px solid black;
+   
     border-collapse: collapse;
-    padding: 1.1em;
-    background-color: antiquewhite;
+    padding: 0.9em;
+    background-color: #2C3A47;
           
             }
         .dashboard-container{
             display: flex;
-            
-            align-items: baseline;
         }
         .customize{
             font-size: 2em;
     text-decoration: none;
-    color: forestgreen;
+    color:#ecf0f1;
     font-family: cursive;
     display: flex;
-    
+    /* background: linear-gradient(45deg,#ffeaa7,black, transparent); */
+        }
+        .customize-score-parent{
+            text-align: center;
+        }
+        .customize span:hover{
+            color: #000 !important;
         }
         .dash-option{
-            position: relative;
-            left: 26.5em;
-            color: forestgreen;
-            height: 9.9em;
+            
+    /* left: 26.5em; */
+    color: forestgreen;
+    height: 46.4em;
+    width: 100%;
+   
+    background-image: url(images/forest.jpg);
+    /* display: flex; */
+    /* flex-wrap: wrap;*/
         }
         .dash-option h1{
-            left: -2.0em;
-            position: relative;
+            color: #ecf0f1;
+    text-align: center;
         }
         .material-icons{
             font-size: 1.5em;
         }
         .highest-score{
-            border: 1px solid black;
+           
     height: 10em;
     border-radius: 2em;
     position: relative;
-    right: 24em;
+    right: -3em;
     top: 3em;
-    background-color: #fd79a8;
+    background-color: #0984e3;
     color: #ecf0f1;
     border-color: floralwhite;
     text-align: center;
-    background: linear-gradient(45deg, #fd79a8,black, transparent);
+    /* background: linear-gradient(45deg, #fd79a8,black, transparent); */
+    width: 30%;
+    
         }
         .highest-score h3{
             position: relative;
-         
+            color: #ecf0f1;
             bottom: -2.5em;
             font-size:1.5em;
         }
@@ -76,11 +86,11 @@
         }
         .second{
             top: -17.23em;
-            left: 15em;
+            left: 36em;
         }
         .forth{
             top: -10.29em;
-    left: 15em;
+    left: 36em;
 
         }
         #aSide {
@@ -125,13 +135,14 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+    color: white;
+    background-color: #0984e3;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 32%;
   border-radius: 10px;
-  background-color: darkseagreen;
+  
 }
 
 /* The Close Button */
@@ -192,15 +203,17 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-
+tr:nth-child(even) {
+  background-color: dodgerblue;
+}
 td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
+  /* border: 1px solid #dddddd; */
+  text-align:center;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+ border-color: blue;;
 }
 /* End model style for table */
 /* End model for Score */
@@ -259,42 +272,122 @@ tr:nth-child(even) {
         }
 
 /*@e profile modal*/
+/* @s level */
+.modal-level{
+    display:none;
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+.level-body{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+}
+.input-box{
+    color: #ecf0f1;
+    font-size: 23px;
+}
+#level-btn{
+            
+            font-size: 30px;
+            border: none;
+            color: white;
+    background-color: #0984e3;
+    border-radius: 7px;
+    margin-bottom: 0.3em;
+    border-color: antiquewhite;
+    border: 1px solid antiquewhite;    
+        }
+.input-box input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.container-level {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px; 
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+.container-level input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the indicator (dot/circle) when checked */
+.container-level input:checked ~ .checkmark:after {
+  display: block;
+}
 
+/* Style the indicator (dot/circle) */
+.container-level .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+/* @e level */
     </style>
 </head>
 <body>
     <div class="dashboard-container">
         <div class="dash-nav">
             <ul>
-                <li class="customize">Home<span class="material-icons">
+                <li class="customize"><span class="material-icons">
                     home
-                    </span></li>
-                <li class="customize">Leaderboard<span class="material-icons">
+                    </span>Home</li>
+                <li class="customize"><span class="material-icons">
                     leaderboard
-                    </span></li>
-                <li class="customize" id="score_id">Scores<span class="material-icons">
+                    </span>Leaderboard</li>
+                <li class="customize" id="score_id"><span class="material-icons">
                     scoreboard
-                    </span></li>
-                <li class="customize">Levels<span class="material-icons">
+                    </span>Scores</li>
+                <li class="customize" id="level_id"><span class="material-icons">
                     rocket
-                    </span></li>
-                <li class="customize" id="customize_id">Customize<span class="material-icons">
+                    </span>Levels</li>
+                <li class="customize" id="customize_id"><span class="material-icons">
                     extension
-                    </span></li>
-                <li class="customize">Reward<span class="material-icons">
+                    </span>Customize</li>
+                <li class="customize"><span class="material-icons">
                     emoji_events
-                    </span></li>
-                <li class="customize" id="profile_id">Profile<span class="material-icons">
+                    </span>Reward</li>
+                <li class="customize" id="profile_id"><span class="material-icons">
                     account_circle
-                    </span></li>
+                    </span>Profile</li>
             </ul>
         </div>
         <div class="dash-option"><h1>Welcome to Chetak</h1>
         <div class="highest-score">
-            <h3 >Highest Score:3456</h3>
+            <h3 id="highest_score"></h3>
         </div>
         <div class="highest-score third">
-            <h3 class='box-h3'>Reward:3456</h3>
+            <h3 class='box-h3'>Reward:NA</h3>
         </div>
         <div class="highest-score second">
             <h3 id='box-h2'>Levels:Easy</h3>
@@ -321,11 +414,11 @@ tr:nth-child(even) {
             <div class="sec-char"><img class="image-customize"  src="images/dog.png" alt=""></div>  
           </div>
           <div class="customize-chars1">
-            <div class="third-char"><img class="image-customize"  src="images/profile.png" alt=""></div>
+            <div class="third-char"></div>
     <div class="forth-char"><img class="image-customize"  src="images/dragon.png" alt=""></div>
           </div>
       </div>
-    
+    <div id="selected-text"></div>
     </div>
   
   </div>
@@ -337,17 +430,12 @@ tr:nth-child(even) {
     <div class="modal-content">
       <span class="close">&times;</span>
       <div class="customize-score-parent">
-        <h3>Top five Scores</h3>
+        <h3>Top Scores</h3>
        <table id="score-history">
         <tr>
             <th>Score</th>
             <th>Lifeline</th>
             <th>Date and Time</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
         </tr>
        </table>
       </div> 
@@ -367,22 +455,65 @@ tr:nth-child(even) {
       </div> 
     </div>
   
-  </div>
+  </div></div>
 <!-- End modal for profile -->
+<!-- Start modal for levels -->
+<div id="user_level" class="modal-level">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="level-body">
+        <div class="input-box">
+            <h1>Set Game Level</h1>
+            <div class="div-lebel">
+                <label for="easy" class="container-level">Easy
+                    <input type="radio" name="levels" value="easy" id="easy" checked="checked" >
+                    <span class="checkmark"></span>
+                </label>
+                
+                <label for="medium" class="container-level" >Medium
+                    <input type="radio" name="levels" value="medium" id="medium">
+                    <span class="checkmark"></span>
+                </label>
+               
+                <label for="hard" class="container-level">Hard
+                    <input type="radio" name="levels" value="medium" id="hard">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+           </div>
+       <div class="level-btn-box">
+        <input type="button" name="level-up" value="Level" id="level-btn">
+        
+       </div>
+        
+    </div>
+  
+  </div>
+<!-- End modal for levels -->
+
 </body>
+
 </html>
 <script>
     // [Start] This code belong to customize secotion.
     let userData=JSON.parse(localStorage.getItem('users'));
-   
+    
+    let selectedTxt=document.getElementById('selected-text')
     let gameData=JSON.parse(localStorage.getItem('game'));
     let firstChar=document.getElementsByClassName('first-char')[0];
     let sec_char=document.getElementsByClassName('sec-char')[0];
     let third_char=document.getElementsByClassName('third-char')[0];
+    let imgElem=document.createElement('img');
+        imgElem.className='image-customize';
+        imgElem.src=userData[0].profile;
+        third_char.append(imgElem);
     let forth_char=document.getElementsByClassName('forth-char')[0];
     firstChar.addEventListener('click',(()=>{
         if(firstChar.childElementCount>1){
             firstChar.removeChild(firstChar.lastElementChild)
+        
         }
         gameData[0].playerImg='images/cat.png';
         localStorage.setItem('game',JSON.stringify(gameData));
@@ -396,21 +527,30 @@ tr:nth-child(even) {
     sec_char.addEventListener('click',(()=>{
         if(firstChar.childElementCount>1){
             firstChar.removeChild(firstChar.lastElementChild)
+            
         }
         gameData[0].playerImg='images/dog.png';
         localStorage.setItem('game',JSON.stringify(gameData));
         let addCat=document.createElement('img');
+        // let addTxt=document.createElement('div');
+        // addTxt.innerText='Selected';
+        // addTxt.style.position='relative';
+        // addTxt.style.left='160px'
         addCat.src='images/dog.png';
         addCat.style.position='fixed';
         addCat.style.left='540px';
         addCat.style.width='140px';
         firstChar.append(addCat);
+    //    selectedTxt.append(addTxt);
     }))
     third_char.addEventListener('click',(()=>{
         if(firstChar.childElementCount>1){
             firstChar.removeChild(firstChar.lastElementChild)
+            
         }
-        gameData[0].playerImg='images/cat.png';
+       
+        
+        gameData[0].playerImg=userData[0].profile;
         localStorage.setItem('game',JSON.stringify(gameData));
         let addCat=document.createElement('img');
         addCat.src=`${userData[0].profile}`;
@@ -475,12 +615,13 @@ let highest = scoreData[0].score;
       } else {
         highest = scoreData[i + 1].score;
       }}
-      
+      let highest_score=document.getElementById('highest_score');
+    highest_score.innerText=`Highest Score ${highest}`;   
 for(let i=1;i<scoreData.length;i++){
     let tableData=`
     <td>${scoreData[i].score}</td>
-    <td>${scoreData[i].date_time}</td>
     <td>${scoreData[i].lifeline}</td>
+    <td>${scoreData[i].date_time}</td>
   `
 let trElm=document.createElement('tr');
 trElm.innerHTML=tableData;
@@ -513,8 +654,8 @@ modal_profile=document.getElementById('user_profile');
             </div>
         </div>
         <div class="highest">
-            <h3>Highest Score</h3>
-             <h3>: 3333</h3>   
+            <h3>Highest Score: </h3>
+             <h3>${highest}</h3>   
         `;
 let profileElm=document.createElement('div')
 profileElm.className='profileData';
@@ -522,5 +663,26 @@ profileElm.innerHTML=user_profile;
 document.getElementsByClassName('containerData')[0].prepend(profileElm);
 document.getElementsByClassName('containerData')[0].style='display:flex';
 document.getElementById('logout').style='display:flex;'
+let logout=document.getElementById('logout');
+logout.addEventListener("click",(()=>{
+    localStorage.removeItem('users');
+    window.location.assign('index.html')
+}))
 // End profile code
+// @SLEVEL code
+modal_level=document.getElementById('user_level');
+    scoreBtn=document.getElementById('level_id');
+    var spans = document.getElementsByClassName("close")[3];
+    scoreBtn.onclick=function(){
+        modal_level.style.display='block';
+    }
+    spans.onclick=function(){
+        modal_level.style.display='none';
+    }
+    window.addEventListener('click',((e)=>{
+        if(e.target===modal_level){
+            modal_level.style.display='none';
+        }
+    })) 
+// @E level code 
 </script>
