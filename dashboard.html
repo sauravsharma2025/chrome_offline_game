@@ -9,6 +9,7 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
     <style>
         *{
@@ -21,7 +22,7 @@
             list-style-type: none;
    
     border-collapse: collapse;
-    padding: 0.9em;
+    padding: 0.71em;
     background-color: #2C3A47;
           
             }
@@ -46,7 +47,7 @@
             
     /* left: 26.5em; */
     color: forestgreen;
-    height: 46.4em;
+    height: 40.9em;
     width: 100%;
    
     background-image: url(images/forest.jpg);
@@ -65,7 +66,7 @@
     height: 10em;
     border-radius: 2em;
     position: relative;
-    right: -3em;
+    right: -4em;
     top: 3em;
     background-color: #0984e3;
     color: #ecf0f1;
@@ -86,11 +87,11 @@
         }
         .second{
             top: -17.23em;
-            left: 36em;
+            left: 41em;
         }
         .forth{
             top: -10.29em;
-    left: 36em;
+    left: 41em;
 
         }
         #aSide {
@@ -359,7 +360,7 @@ tr:nth-child(even) {
     <div class="dashboard-container">
         <div class="dash-nav">
             <ul>
-                <li class="customize"><span class="material-icons">
+                <li class="customize" style="background-color:darkcyan;"><span class="material-icons">
                     home
                     </span>Home</li>
                 <li class="customize"><span class="material-icons">
@@ -520,7 +521,7 @@ tr:nth-child(even) {
         let addCat=document.createElement('img');
         addCat.src='images/cat.png';
         addCat.style.position='fixed';
-        addCat.style.left='540px';
+        addCat.style.left='610px';
         addCat.style.width='140px';
         firstChar.append(addCat);
     }))
@@ -538,7 +539,7 @@ tr:nth-child(even) {
         // addTxt.style.left='160px'
         addCat.src='images/dog.png';
         addCat.style.position='fixed';
-        addCat.style.left='540px';
+        addCat.style.left='610px';
         addCat.style.width='140px';
         firstChar.append(addCat);
     //    selectedTxt.append(addTxt);
@@ -555,7 +556,7 @@ tr:nth-child(even) {
         let addCat=document.createElement('img');
         addCat.src=`${userData[0].profile}`;
         addCat.style.position='fixed';
-        addCat.style.left='540px';
+        addCat.style.left='610px';
         addCat.style.width='140px';
         firstChar.append(addCat);
     }))
@@ -568,7 +569,7 @@ tr:nth-child(even) {
         let addCat=document.createElement('img');
         addCat.src='images/dragon.png';
         addCat.style.position='fixed';
-        addCat.style.left='540px';
+        addCat.style.left='610px';
         addCat.style.width='140px';
         firstChar.append(addCat);
     }))

@@ -28,7 +28,24 @@ function triggerGame() {
     localStorage.setItem("game", JSON.stringify([gameObj]));
   }
   if (localStorage.getItem("users")) {
-    //start below code is for user profile on screen
+    document
+      .getElementById("profile_format_id")
+      .addEventListener("click", showProfileBox);
+    function showProfileBox() {
+      if (
+        document.getElementsByClassName("containerData")[0].style.display ===
+        "none"
+      ) {
+        document.getElementsByClassName("containerData")[0].style.display =
+          "flex";
+
+        document.getElementById("logout").style.display = "flex";
+      } else {
+        document.getElementsByClassName("containerData")[0].style.display =
+          "none";
+      }
+      //start below code is for user profile on screen
+    }
     let scoreHistory = JSON.parse(localStorage.getItem("score_history"));
     console.log("SK@", scoreHistory[0].score);
     let highest = scoreHistory[0].score;
@@ -44,23 +61,34 @@ function triggerGame() {
     let userData = JSON.parse(localStorage.getItem("users"));
     console.log("SK@43", userData);
     let user_profile = `
-          <img src="${userData[0].profile}" alt="" width="50px" height="50px" style="border-radius:30px">
-          <div class="name-email">
-              <p>Name:${userData[0].name}</p>
-              <p>Email:${userData[0].email}</p>
-          </div>
-      </div>
-      <div class="highest">
-          <h3>Highest Score</h3>
-           <h3>: ${highest}</h3>   
-      `;
+    <div class="image-holder">
+     <img src="${userData[0].profile}" alt="" width="120px" height="90px" style="border-radius:30px;object-fit:cover;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+     </div>
+     <div class="name-email">
+         <p>${userData[0].name}</p>
+         <p>${userData[0].email}</p>
+     </div>
+ </div>
+ <div class="highest">
+     <h3>Highest Score</h3>
+      <h3>: ${highest}</h3>   
+ `;
     let profileElm = document.createElement("div");
     profileElm.className = "profileData";
     profileElm.innerHTML = user_profile;
     document.getElementsByClassName("containerData")[0].prepend(profileElm);
-    document.getElementsByClassName("containerData")[0].style = "display:flex";
-    document.getElementById("logout").style = "display:flex;";
-
+    // document.getElementById(
+    //   "show_profile"
+    // ).innerHTML = `<img src='images/cat.png' width='30px' height='30px'>`;
+    let profileOnHome = document.createElement("img");
+    profileOnHome.src = userData[0].profile;
+    profileOnHome.style.width = "30px";
+    profileOnHome.style.height = "30px";
+    document.getElementById("show_profile").append(profileOnHome);
+    document.getElementById("high_record").innerHTML = ` HI : ${highest}`;
+    // document
+    //   .getElementById("profile_format_id")
+    //   .removeEventListener("click", showProfileBox);
     // End user profile code end here.
   }
 
@@ -92,7 +120,7 @@ function triggerGame() {
   }
   document.addEventListener("keydown", startGame);
   dino.addEventListener("touchstart", startGameOnclick);
-  function startGameOnclick(event) {
+  function startGameOnclick() {
     jump();
     cactus.className = "cactus-move";
     score += 1;
@@ -122,6 +150,7 @@ function triggerGame() {
   }
   function startGame(event) {
     if (event.code === "Space") {
+      document.getElementById("game-over").style.display = "none";
       jump();
       cactus.className = "cactus-move";
       score += 1;
@@ -204,15 +233,10 @@ function triggerGame() {
         localStorage.setItem("High", score);
       }
       cactus.style.animationDuration = "1.5s";
-      let msgH1 = document.createElement("h1");
-      let msgH11 = "Game Over! Click to Start Again";
-      document.getElementById(
-        "game-over"
-      ).innerHTML = `<nobr><h1 id='over' style='text-align:center;color:red;'>Game Over! Click to Start Again</h1>`;
+      document.getElementById("game-over").style.display = "block";
       const overMe = setTimeout(() => {
         cactus.removeAttribute("class");
         let storeScore = score;
-
         score = 0;
 
         // runAudio.remove();
