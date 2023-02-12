@@ -1,5 +1,5 @@
 body{
-  background-image:url("/images/wall.jpeg");
+  background-image:url("images/wall.jpeg");
   background-repeat: round;
   overflow: hidden;
 }
