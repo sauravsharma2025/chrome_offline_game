@@ -1,11 +1,12 @@
 body{
   background-image:url("/images/wall.jpeg");
   background-repeat: round;
+  overflow: hidden;
 }
 .grayscale { filter: grayscale(100%); }
 .game{
   position: absolute;
-  top: 209px;
+  top: -5px;
     width: 100%;
     /* height: 320px; */
     border-bottom: 5px solid black;
@@ -21,14 +22,21 @@ body{
     width: 100px;
     height: 90px;
     background-image: url(images/dragon.png);
-    background-size: 100px 100px;
+    background-size: 125px 114px;
     position: relative;
     top: 192px;
     
 }
+.theme-dog{
+  z-index: 9000;
+    position: absolute;
+    bottom: -67px;
+    right: -75px;
+}
 .game-img{
   width: 100%;
     object-fit: cover;
+    margin-top: -220px;
 }
 #cactus{
     width: 70px;
@@ -88,6 +96,9 @@ body{
     display: none;
     font-size: 50px;
     border-radius: 10px;
+    position: absolute;
+    top: 330px;
+    left: 341px;
 }
 #score{
       position: absolute;
@@ -255,7 +266,9 @@ margin-top: 5px;
   top: 4.5em;
   position: absolute;
   box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
-
+background-color: #000;
+height: 271px;
+width:262px;
 }
 .profileData{
   display: flex;
@@ -266,26 +279,61 @@ margin-top: 5px;
 .name-email{
   display: flex;
 flex-direction: column;
+color: white;
+    font-size: 20px;
 }
 .name-email p{
-  margin: 0.1em;
-  color: darkblue;
-  font-size:1 em;
+  color: white;
+
+
+  font-size: 20px;
+  padding: 5px;
+    margin: 1px;
 }
 .highest{
   display: flex;
 }
-.highest h3{
-  color: darkcyan;
+.highest p{
+  color: white;
+ 
+  font-size: 20px;
+  padding: 5px;
+    margin: 1px;
+ 
+}
+.glow{
+  animation: glow 1s ease-in-out infinite alternate;
+  color: wheat;
+  margin-top: -14px;
+  font-size: 20px;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
 }
 #logout{
   display: none;
   font-size: 20px;
   border: none;
-  color: aquamarine;
+  color: white;
   background-color: darkslateblue;
 border-radius: 7px;
 margin-bottom: 0.3em;
+}
+.profile-cart-img{
+  border-radius: 100%;
+    display: flex;
+    margin-left: 24px;
+}
+#celebrate{
+  bottom: 50%;
+    right: 50%;
+    display: none;
 }
 /*Stop below css belong to user profile cart on game page  */
 .profile-format{
@@ -307,10 +355,23 @@ margin-bottom: 0.3em;
     border-color: lightskyblue;
 }
 .image-holder{
-  height: 90px;
+  /* height: 90px;
   background-color: darkcyan;
-  width: 121%;
-  border-radius: 12px;
+  width: 100%;
+  border-radius: 9px;
   display: flex;
-  justify-content: center;
+  justify-content: center; */
+  display: flex;
+    flex-direction: column;
+  
+}
+.image-holder  :first-child{
+  margin-top: 7px;
+}
+
+.game-header p{
+  font-weight: 900;
+  font-size: 90px;
+    width: 1286px;
+
 }

@@ -62,16 +62,16 @@ function triggerGame() {
     console.log("SK@43", userData);
     let user_profile = `
     <div class="image-holder">
-     <img src="${userData[0].profile}" alt="" width="120px" height="90px" style="border-radius:30px;object-fit:cover;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+    <p>
+     <img src="${userData[0].profile}" alt="" width="110px" height="90px" class="profile-cart-img">
+     </p>
+         <p class="name-email">${userData[0].name}</p>   
+     <p class="highest glow">Highest Score : ${highest}</p>
+      
+    
+
      </div>
-     <div class="name-email">
-         <p>${userData[0].name}</p>
-         <p>${userData[0].email}</p>
-     </div>
- </div>
- <div class="highest">
-     <h3>Highest Score</h3>
-      <h3>: ${highest}</h3>   
+  
  `;
     let profileElm = document.createElement("div");
     profileElm.className = "profileData";
@@ -128,16 +128,16 @@ function triggerGame() {
     if (existingData) {
       document.getElementById(
         "score"
-      ).innerHTML = `High score: ${localStorage.getItem(
+      ).innerHTML = `High score:${localStorage.getItem(
         "High"
-      )} Total Score:${score}`;
+      )} Total score:${score}`;
     } else {
-      document.getElementById("score").innerHTML = ` Total Score:${score}`;
+      document.getElementById("score").innerHTML = ` Total score:${score}`;
     }
     if (score > localStorage.getItem("High")) {
       document.getElementById(
         "score"
-      ).innerHTML = `High score:${score} Total Score:${score}`;
+      ).innerHTML = `High score:${score} Total score:${score}`;
     }
 
     if (score + 1 == localStorage.getItem("High")) {
@@ -159,16 +159,16 @@ function triggerGame() {
       if (existingData) {
         document.getElementById(
           "score"
-        ).innerHTML = `High score: ${localStorage.getItem(
+        ).innerHTML = `High score:${localStorage.getItem(
           "High"
-        )} Total Score:${score}`;
+        )} Total score:${score}`;
       } else {
-        document.getElementById("score").innerHTML = ` Total Score:${score}`;
+        document.getElementById("score").innerHTML = ` Total score:${score}`;
       }
       if (score > localStorage.getItem("High")) {
         document.getElementById(
           "score"
-        ).innerHTML = `High score:${score} Total Score:${score}`;
+        ).innerHTML = `High score:${score} Total score:${score}`;
       }
     }
     if (score + 1 == localStorage.getItem("High")) {
@@ -176,6 +176,11 @@ function triggerGame() {
       highScoreSound.id = "high-score-sound";
       highScoreSound.src = "audio/jump1.mp3";
       highScoreSound.autoplay = "autoplay";
+      let celebrate = document.getElementById("celebrate");
+      celebrate.style.display = "block";
+      setTimeout(() => {
+        celebrate.style.display = "none";
+      }, 1000);
       dino.append(highScoreSound);
       // setTimeout(() => {
       //   cactus.style.animationDuration = "1.3s";

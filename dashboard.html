@@ -412,11 +412,12 @@ tr:nth-child(even) {
         <h3>Choose your character</h3>
         <div class="customize-chars">
             <div class="first-char"><img class="image-customize" src="images/cat.png" alt=""></div>
-            <div class="sec-char"><img class="image-customize"  src="images/dog.png" alt=""></div>  
+            <div class="sec-char"><img class="image-customize"  src="images/dog.gif" alt=""></div>  
           </div>
           <div class="customize-chars1">
             <div class="third-char"></div>
     <div class="forth-char"><img class="image-customize"  src="images/dragon.png" alt=""></div>
+    <div class="fifth-char"><img class="image-customize"  src="images/hiphop.gif" alt=""></div>
           </div>
       </div>
     <div id="selected-text"></div>
@@ -506,6 +507,7 @@ tr:nth-child(even) {
     let firstChar=document.getElementsByClassName('first-char')[0];
     let sec_char=document.getElementsByClassName('sec-char')[0];
     let third_char=document.getElementsByClassName('third-char')[0];
+    let fifth_char=document.getElementsByClassName('fifth-char')[0];
     let imgElem=document.createElement('img');
         imgElem.className='image-customize';
         imgElem.src=userData[0].profile;
@@ -516,10 +518,10 @@ tr:nth-child(even) {
             firstChar.removeChild(firstChar.lastElementChild)
         
         }
-        gameData[0].playerImg='images/cat.png';
+        gameData[0].playerImg='images/cat.gif';
         localStorage.setItem('game',JSON.stringify(gameData));
         let addCat=document.createElement('img');
-        addCat.src='images/cat.png';
+        addCat.src='images/cat.gif';
         addCat.style.position='fixed';
         addCat.style.left='610px';
         addCat.style.width='140px';
@@ -530,14 +532,14 @@ tr:nth-child(even) {
             firstChar.removeChild(firstChar.lastElementChild)
             
         }
-        gameData[0].playerImg='images/dog.png';
+        gameData[0].playerImg='images/dog.gif';
         localStorage.setItem('game',JSON.stringify(gameData));
         let addCat=document.createElement('img');
         // let addTxt=document.createElement('div');
         // addTxt.innerText='Selected';
         // addTxt.style.position='relative';
         // addTxt.style.left='160px'
-        addCat.src='images/dog.png';
+        addCat.src='images/dog.gif';
         addCat.style.position='fixed';
         addCat.style.left='610px';
         addCat.style.width='140px';
@@ -568,6 +570,19 @@ tr:nth-child(even) {
         localStorage.setItem('game',JSON.stringify(gameData));
         let addCat=document.createElement('img');
         addCat.src='images/dragon.png';
+        addCat.style.position='fixed';
+        addCat.style.left='610px';
+        addCat.style.width='140px';
+        firstChar.append(addCat);
+    }))
+    fifth_char.addEventListener('click',(()=>{
+        if(firstChar.childElementCount>1){
+            firstChar.removeChild(firstChar.lastElementChild)
+        }
+        gameData[0].playerImg='images/hiphop.gif';
+        localStorage.setItem('game',JSON.stringify(gameData));
+        let addCat=document.createElement('img');
+        addCat.src='images/hiphop.gif';
         addCat.style.position='fixed';
         addCat.style.left='610px';
         addCat.style.width='140px';

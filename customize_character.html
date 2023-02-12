@@ -40,13 +40,17 @@ switch(selectedValue.value){
         localStorage.setItem('game',JSON.stringify(gameData));    
         break;
     case "Dog":
-        gameData[0].playerImg='images/dog.png';
+        gameData[0].playerImg='images/dog.gif';
         localStorage.setItem('game',JSON.stringify(gameData));    
         break;
     case "Cat":
-        gameData[0].playerImg='images/cat.png';
+        gameData[0].playerImg='images/cat.gif';
         localStorage.setItem('game',JSON.stringify(gameData));    
-        break;     
+        break; 
+    case "hiphop":
+    gameData[0].playerImg='images/hiphop.gif';
+        localStorage.setItem('game',JSON.stringify(gameData));    
+        break;         
 }
 
 }
