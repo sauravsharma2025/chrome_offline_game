@@ -21,7 +21,7 @@ function triggerGame() {
   if (!localStorage.getItem("game")) {
     let gameObj = {
       player: "dragon",
-      playerImg: "images/dragon.png",
+      playerImg: "images/cat.gif",
       enemy: "images/cactus.png",
       theme: "white",
     };
