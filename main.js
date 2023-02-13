@@ -12,7 +12,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+if (localStorage.getItem("game")) {
+  console.log("SK@heer");
+  let btn = document.getElementById("anonymously");
+  document.getElementById("login-register").innerText = "Play";
+  btn.style.display = "none";
+}
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 let playGuest = document.getElementById("anonymously");
@@ -60,6 +65,7 @@ function triggerGame() {
     console.log("SK@42", highest);
     let userData = JSON.parse(localStorage.getItem("users"));
     console.log("SK@43", userData);
+
     let user_profile = `
     <div class="image-holder">
     <p>
@@ -93,6 +99,7 @@ function triggerGame() {
   }
 
   let gameData = JSON.parse(localStorage.getItem("game"));
+
   document.getElementsByClassName("main")[0].remove();
   game.style = "display:flex";
   let dino = document.getElementById("dino");

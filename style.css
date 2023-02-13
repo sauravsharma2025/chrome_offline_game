@@ -105,7 +105,11 @@ body{
       top: 3em;
       left: 36%;
       font-size: 30px;
-      color: lightseagreen;
+      background: white;
+    padding: 16px 32px 16px 32px;
+    border-radius: 42px;
+    color: black;
+    font-size: 23px;
 
 }
 /* Model starts here */
@@ -224,7 +228,8 @@ body{
     position: relative;
     margin: auto;
     display: flex;
-    flex-direction: column;
+    gap:2px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     height: 120px;
@@ -242,16 +247,19 @@ body{
     
 }
 #login-register{
-    font-size: large;
-background: coral;
-border: none;
-color: white;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: larger;
+  font-weight: bold;
 }
 .play-as-guest{
     font-size: larger;
-background-color: black;
-color: wheat;
-margin-top: 5px;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    background-color: lightsteelblue;
 }
 /* Start below css belong to user profile cart on game page */
 .containerData{
@@ -262,11 +270,11 @@ margin-top: 5px;
   border-radius: 12px;
   width: 16.5em;
   position:absolute;
-  left: 78.6em;
+  right: 0;
   top: 4.5em;
   position: absolute;
   box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
-background-color: #000;
+background-color:white;
 height: 271px;
 width:262px;
 }
@@ -279,7 +287,7 @@ width:262px;
 .name-email{
   display: flex;
 flex-direction: column;
-color: white;
+color: black;
     font-size: 20px;
 }
 .name-email p{
@@ -303,9 +311,9 @@ color: white;
 }
 .glow{
   animation: glow 1s ease-in-out infinite alternate;
-  color: wheat;
+  color: black;
   margin-top: -14px;
-  font-size: 20px;
+  font-size: 15px;
 }
 @keyframes glow {
   from {
@@ -373,5 +381,5 @@ margin-bottom: 0.3em;
   font-weight: 900;
   font-size: 90px;
     width: 1286px;
-
+    color: honeydew;
 }
