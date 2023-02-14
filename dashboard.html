@@ -525,7 +525,7 @@ tr:nth-child(even) {
       <span class="close">&times;</span>
       <div class="containerData">
         <div class="log-out">
-            <input id="logout" type="button" value="Sign-out">
+            <input id="logout" type="button" value="Sign out">
       </div> 
     </div>
   
@@ -699,7 +699,7 @@ tr:nth-child(even) {
     }))
    
     let scoreData=JSON.parse(localStorage.getItem('score_history'));
-
+console.log('SK@scoreData',scoreData);
 let highest = scoreData[0].score;
     for (let i = 0; i < scoreData.length - 1; i++) {
       let next = scoreData[i + 1].score;
