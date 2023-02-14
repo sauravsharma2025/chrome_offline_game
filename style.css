@@ -260,15 +260,15 @@ body{
   font-weight: bold;
 }
 .play-as-guest{
-  background-color: black;
-color: wheat;
-margin-top: 5px;
+  
+color: black;
+  background-color: white;
     font-size: larger;
     border: 1px solid black;
     padding: 20px;
     border-radius: 12px;
     font-weight: bold;
-    background-color: lightsteelblue;
+
 }
 /* Start below css belong to user profile cart on game page */
 .containerData{

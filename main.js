@@ -73,11 +73,7 @@ function triggerGame() {
      </p>
          <p class="name-email">${userData[0].name}</p>   
      <p class="highest glow">Highest Score : ${highest}</p>
-      
-    
-
      </div>
-  
  `;
     let profileElm = document.createElement("div");
     profileElm.className = "profileData";
@@ -178,7 +174,7 @@ function triggerGame() {
         ).innerHTML = `High score:${score} Total score:${score}`;
       }
     }
-    if (score + 1 == localStorage.getItem("High")) {
+    if (score == localStorage.getItem("High")) {
       let highScoreSound = document.createElement("audio");
       highScoreSound.id = "high-score-sound";
       highScoreSound.src = "audio/jump1.mp3";
@@ -227,7 +223,7 @@ function triggerGame() {
       if (score >= 5) {
         let scoreObj = {
           score: score,
-          date_time: new Date().toLocaleString(),
+          date_time: moment().unix(),
           lifeline: "No",
         };
         let localStorageArrObj = JSON.parse(
@@ -340,3 +336,9 @@ if (!localStorage.getItem("score_history")) {
     ])
   );
 }
+document.getElementById("logout").addEventListener("click", () => {
+  console.log("SK@logout");
+  delete localStorage.removeItem("users");
+  delete localStorage.removeItem("score_history");
+  location.reload();
+});

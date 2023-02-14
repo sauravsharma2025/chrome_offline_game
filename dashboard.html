@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
+    <script type = "text/JavaScript" src = " https://MomentJS.com/downloads/moment.js"></script>
     <style>
         *{
             margin:0px;
@@ -204,11 +205,9 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-tr:nth-child(even) {
-  background-color: dodgerblue;
-}
+
 td, th {
-  /* border: 1px solid #dddddd; */
+  border: 1px solid #dddddd;
   text-align:center;
   padding: 8px;
 }
@@ -491,7 +490,7 @@ tr:nth-child(even) {
     <div class="modal-content">
       <span class="close">&times;</span>
       <div class="customize-score-parent">
-        <h3>Top Scores</h3>
+        <h3>Record History</h3>
        <table id="score-history">
         <tr>
             <th>Score</th>
@@ -694,10 +693,14 @@ let highest = scoreData[0].score;
       let highest_score=document.getElementById('highest_score');
     highest_score.innerText=`Highest Score ${highest}`;   
 for(let i=1;i<scoreData.length;i++){
+    let x=scoreData[i].date_time
+    var date = new Date(x*1000);
+ 
+    console.log('SK@',moment(date, "YYYYMMDD").fromNow());
     let tableData=`
     <td>${scoreData[i].score}</td>
     <td>${scoreData[i].lifeline}</td>
-    <td>${scoreData[i].date_time}</td>
+    <td>${moment(date, "YYYYMMDD").fromNow()}</td>
   `
 let trElm=document.createElement('tr');
 trElm.innerHTML=tableData;
@@ -766,4 +769,5 @@ function myFunction() {
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
+
 </script>
