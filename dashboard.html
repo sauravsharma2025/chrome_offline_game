@@ -136,8 +136,8 @@
 
 /* Modal Content */
 .modal-content {
-    color: white;
-    background-color: #0984e3;
+    color: black;
+    background-color: white;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -180,7 +180,7 @@
 .customize-char-parent h3{
     text-align: center;
     font-size: 20px;
-    color: lemonchiffon;
+    color: black;
  }
 
 /*End modal css  */
@@ -237,7 +237,7 @@ tr:nth-child(even) {
             display: none;
             flex-direction: column;
             align-items: center;
-            
+            padding: 10px;
             font-size: 20px;
             width: 100%;
         }
@@ -245,16 +245,19 @@ tr:nth-child(even) {
             display: flex;
             align-items:center;
             flex-direction: column;
-            
+            gap: 10px;
         }
         .profileData img{
-            border-radius: 30px;
-    width: 200px;
-    height: 200px;
+            border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
         }
         .name-email{
             display: flex;
     flex-direction: column;
+    align-items: center;
+    font-weight: 500;
         }
         .name-email p{
             margin: 0.1em;
@@ -263,13 +266,15 @@ tr:nth-child(even) {
             display: flex;
         }
         #logout{
-            display: none;
-            font-size: 20px;
-            border: none;
-            color: aquamarine;
-            background-color: darkslateblue;
+            display: flex;
+    font-size: 20px;
+    border: none;
+    color: white;
+    background-color: darkslateblue;
     border-radius: 7px;
     margin-bottom: 0.3em;
+    padding: 10px;
+    margin: 10px;
         }
 
 /*@e profile modal*/
@@ -294,11 +299,12 @@ tr:nth-child(even) {
     gap: 15px;
 }
 .input-box{
-    color: #ecf0f1;
+    color: black;
     font-size: 23px;
 }
 #level-btn{
-            
+    padding: 5px;
+    margin: 5px;
             font-size: 30px;
             border: none;
             color: white;
@@ -327,7 +333,7 @@ tr:nth-child(even) {
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color:darkgray;
   border-radius: 50%;
 }
 .container-level input:checked ~ .checkmark {
@@ -354,10 +360,63 @@ tr:nth-child(even) {
 	background: white;
 }
 /* @e level */
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: darkcyan; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 10000; /* Add a z-index if needed */
+  left: 85%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+  font-weight: 900;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+.modal-content{
+    position:absolute;
+    right: 22%;
+}
     </style>
 </head>
 <body>
     <div class="dashboard-container">
+<!-- The actual snackbar -->
+<div id="snackbar">Character updated successfully</div>
         <div class="dash-nav">
             <ul>
                 <li class="customize" style="background-color:darkcyan;"><span class="material-icons">
@@ -411,13 +470,13 @@ tr:nth-child(even) {
       <div class="customize-char-parent">
         <h3>Choose your character</h3>
         <div class="customize-chars">
-            <div class="first-char"><img class="image-customize" src="images/cat.png" alt=""></div>
-            <div class="sec-char"><img class="image-customize"  src="images/dog.gif" alt=""></div>  
+            <div onclick="myFunction()" class="first-char"><img class="image-customize" src="images/cat.gif" alt=""></div>
+            <div  onclick="myFunction()" class="sec-char"><img class="image-customize"  src="images/dog.gif" alt=""></div>  
           </div>
           <div class="customize-chars1">
-            <div class="third-char"></div>
-    <div class="forth-char"><img class="image-customize"  src="images/dragon.png" alt=""></div>
-    <div class="fifth-char"><img class="image-customize"  src="images/hiphop.gif" alt=""></div>
+            <div  onclick="myFunction()" class="third-char"></div>
+    <div  onclick="myFunction()" class="forth-char"><img class="image-customize"  src="images/dragon.png" alt=""></div>
+    <div  onclick="myFunction()" class="fifth-char"><img class="image-customize"  src="images/hiphop.gif" alt=""></div>
           </div>
       </div>
     <div id="selected-text"></div>
@@ -523,7 +582,7 @@ tr:nth-child(even) {
         let addCat=document.createElement('img');
         addCat.src='images/cat.gif';
         addCat.style.position='fixed';
-        addCat.style.left='610px';
+        addCat.style.left='750px';
         addCat.style.width='140px';
         firstChar.append(addCat);
     }))
@@ -541,7 +600,7 @@ tr:nth-child(even) {
         // addTxt.style.left='160px'
         addCat.src='images/dog.gif';
         addCat.style.position='fixed';
-        addCat.style.left='610px';
+        addCat.style.left='750px';
         addCat.style.width='140px';
         firstChar.append(addCat);
     //    selectedTxt.append(addTxt);
@@ -558,8 +617,9 @@ tr:nth-child(even) {
         let addCat=document.createElement('img');
         addCat.src=`${userData[0].profile}`;
         addCat.style.position='fixed';
-        addCat.style.left='610px';
+        addCat.style.left='773px';
         addCat.style.width='140px';
+        addCat.style.margin='-20px';
         firstChar.append(addCat);
     }))
     forth_char.addEventListener('click',(()=>{
@@ -571,7 +631,7 @@ tr:nth-child(even) {
         let addCat=document.createElement('img');
         addCat.src='images/dragon.png';
         addCat.style.position='fixed';
-        addCat.style.left='610px';
+        addCat.style.left='750px';
         addCat.style.width='140px';
         firstChar.append(addCat);
     }))
@@ -584,7 +644,7 @@ tr:nth-child(even) {
         let addCat=document.createElement('img');
         addCat.src='images/hiphop.gif';
         addCat.style.position='fixed';
-        addCat.style.left='610px';
+        addCat.style.left='750px';
         addCat.style.width='140px';
         firstChar.append(addCat);
     }))
@@ -663,7 +723,7 @@ modal_profile=document.getElementById('user_profile');
         }
     }
     let user_profile=`
-            <img src="${userData[0].profile}" alt="" width="50px" height="50px" style="border-radius:30px">
+            <img src="${userData[0].profile}" alt="">
             <div class="name-email">
                 <p>Name:${userData[0].name}</p>
                 <p>Email:${userData[0].email}</p>
@@ -701,4 +761,9 @@ modal_level=document.getElementById('user_level');
         }
     })) 
 // @E level code 
+function myFunction() {
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
 </script>

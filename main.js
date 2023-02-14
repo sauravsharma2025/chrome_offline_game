@@ -12,7 +12,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-if (localStorage.getItem("game")) {
+if (localStorage.getItem("users")) {
   console.log("SK@heer");
   let btn = document.getElementById("anonymously");
   document.getElementById("login-register").innerText = "Play";
@@ -69,7 +69,7 @@ function triggerGame() {
     let user_profile = `
     <div class="image-holder">
     <p>
-     <img src="${userData[0].profile}" alt="" width="110px" height="90px" class="profile-cart-img">
+     <img src="${userData[0].profile}" alt="" width="90px" height="90px" class="profile-cart-img">
      </p>
          <p class="name-email">${userData[0].name}</p>   
      <p class="highest glow">Highest Score : ${highest}</p>

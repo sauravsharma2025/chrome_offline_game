@@ -1,15 +1,20 @@
+
+
 body{
+  
   background-image:url("images/wall.jpeg");
   background-repeat: round;
   overflow: hidden;
+  user-select: none;
 }
 .grayscale { filter: grayscale(100%); }
 .game{
   position: absolute;
-  top: -5px;
+  /* top: -5px; */
+  bottom: 253px;
     width: 100%;
     /* height: 320px; */
-    border-bottom: 5px solid black;
+    border-bottom: 0.1px solid black;
     /* background-image: url(images/ground.png);
     background-size: 100px 100px; */
     margin: auto;
@@ -91,19 +96,20 @@ body{
 #game-over{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
-    color:red;
-    background-color: aqua;
+    color:black;
+    background-color: white;
     display: none;
     font-size: 50px;
     border-radius: 10px;
     position: absolute;
-    top: 330px;
-    left: 341px;
+    top: 441px;
+    left: 327px;
+    font-weight: bold;
 }
 #score{
       position: absolute;
       top: 3em;
-      left: 36%;
+      left: 37%;
       font-size: 30px;
       background: white;
     padding: 16px 32px 16px 32px;
@@ -219,7 +225,7 @@ body{
 
   /* This is css for google sign in button and all */
   *{
-    color: brown;
+    color: black;
     
 }
 .container{
@@ -293,7 +299,7 @@ color: black;
 .name-email p{
   color: white;
 
-
+font-weight: bold;
   font-size: 20px;
   padding: 5px;
     margin: 1px;
@@ -303,6 +309,7 @@ color: black;
 }
 .highest p{
   color: white;
+  font-weight: bold;
  
   font-size: 20px;
   padding: 5px;
@@ -324,8 +331,24 @@ color: black;
     text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
   }
 }
+.arrow_profile{
+  position: absolute;
+    right: 64px;
+    bottom: 263px;
+    font-weight: bold;
+   
+}
 #logout{
   display: none;
+  font-size: 20px;
+  border: none;
+  color: white;
+  background-color: darkslateblue;
+border-radius: 7px;
+margin-bottom: 0.3em;
+}
+#dashboard{
+  
   font-size: 20px;
   border: none;
   color: white;
@@ -371,10 +394,12 @@ margin-bottom: 0.3em;
   justify-content: center; */
   display: flex;
     flex-direction: column;
-  
+  object-fit:contain;
 }
 .image-holder  :first-child{
   margin-top: 7px;
+  object-fit:contain;
+}
 }
 
 .game-header p{
@@ -382,4 +407,76 @@ margin-bottom: 0.3em;
   font-size: 90px;
     width: 1286px;
     color: honeydew;
+}
+
+@media screen and ( max-width: 1200px ) {
+  .game {
+  bottom: 244px;
+  }
+  #game-over{
+    top: 314px;
+    left: 200px;
+  }
+  .theme-dog{
+    width: 323px;
+  }
+  #score{
+    top:8em
+
+  }
+  .profile-format{
+    margin-top: 0px;
+    position: absolute;
+    right: 0;
+
+  }
+}
+/* @media screen and ( max-width: 1500px ) {
+  .game {
+  bottom: 240px;
+  }
+  #cactus{
+    left: 832px;
+  }
+} */
+/* @media screen and ( max-width: 1300px ) {
+  .game {
+  bottom: 244px;
+  }
+  #game-over{
+    top: 314px;
+    left: 200px;
+  }
+  .theme-dog{
+    width: 323px;
+  }
+  #score{
+    top:8em
+
+  }
+  .profile-format{
+    margin-top: 0px;
+    position: absolute;
+    right: 0;
+    bottom: 315px;
+
+  }
+} */
+ /* @media all and ( max-width: 1300px ) {
+  .game {
+  bottom: 192px;
+  }
+  .game-img{
+    margin-top: 0px;
+  }
+ 
+} */
+  @media all and ( max-width: 480px ) {
+  .game {
+  bottom: 192px;
+  }
+  .game-img{
+    margin-top: 0px;
+  }
+ 
 }
