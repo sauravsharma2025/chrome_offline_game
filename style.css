@@ -260,6 +260,9 @@ body{
   font-weight: bold;
 }
 .play-as-guest{
+  background-color: black;
+color: wheat;
+margin-top: 5px;
     font-size: larger;
     border: 1px solid black;
     padding: 20px;
@@ -400,7 +403,7 @@ margin-bottom: 0.3em;
   margin-top: 7px;
   object-fit:contain;
 }
-}
+
 
 .game-header p{
   font-weight: 900;
