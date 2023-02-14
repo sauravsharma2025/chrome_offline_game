@@ -410,6 +410,17 @@ tr:nth-child(even) {
     position:absolute;
     right: 22%;
 }
+.arrow_back{
+    position: absolute;
+    color: white;
+    top: 37px;
+    
+    border-radius: 100%;
+    padding: 10px;
+    margin: 5px;
+    background-color: cornflowerblue;
+    font-weight: 900;
+}
     </style>
 </head>
 <body>
@@ -441,18 +452,21 @@ tr:nth-child(even) {
                     </span>Profile</li>
             </ul>
         </div>
+        <div onclick="moveToHome()"><span class="material-icons arrow_back">
+            arrow_back
+            </span></div>
         <div class="dash-option"><h1>Welcome to Chetak</h1>
         <div class="highest-score">
             <h3 id="highest_score"></h3>
         </div>
         <div class="highest-score third">
-            <h3 class='box-h3'>Reward:NA</h3>
+            <h3 class='box-h3'>Reward : NA</h3>
         </div>
         <div class="highest-score second">
-            <h3 id='box-h2'>Levels:Easy</h3>
+            <h3 id='box-h2'>Levels : Easy</h3>
         </div>
         <div class="highest-score forth">
-            <h3 class='box-h4' id="customize">Customize</h3>
+            <h3 class='box-h4' id="customize_tab">Customize</h3>
         </div>
         </div>
         <div class="cartoon-dragon">
@@ -511,7 +525,7 @@ tr:nth-child(even) {
       <span class="close">&times;</span>
       <div class="containerData">
         <div class="log-out">
-            <input id="logout" type="button" value="Log-out">
+            <input id="logout" type="button" value="Sign-out">
       </div> 
     </div>
   
@@ -649,8 +663,12 @@ tr:nth-child(even) {
     }))
      modal=document.getElementById('customize-char');
      modalCustmizeBtn=document.getElementById('customize_id');
+     modalCustmizeTab=document.getElementById('customize_tab');
     var span = document.getElementsByClassName("close")[0];
     modalCustmizeBtn.onclick=function(){
+        modal.style.display='block';
+    }
+    modalCustmizeTab.onclick=function(){
         modal.style.display='block';
     }
     span.onclick=function(){
@@ -691,7 +709,7 @@ let highest = scoreData[0].score;
         highest = scoreData[i + 1].score;
       }}
       let highest_score=document.getElementById('highest_score');
-    highest_score.innerText=`Highest Score ${highest}`;   
+    highest_score.innerText=`Highest Score : ${highest}`;   
 for(let i=1;i<scoreData.length;i++){
     let x=scoreData[i].date_time
     var date = new Date(x*1000);
@@ -769,5 +787,7 @@ function myFunction() {
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
-
+function moveToHome(){
+    window.location.href = "index.html";
+}
 </script>
